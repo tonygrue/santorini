@@ -63,10 +63,11 @@ fn main() {
     println!("RC math: {}", count_recursive_combos(25, 25, 4));
     println!("4^21 RC: {}", count_recursive_combos(21, 21, 4));
     println!("4^21 Pow: {}", (5 as u128).pow(21));
-    println!("JC math: {}", nCr(25, 4) * nCr(4, 2)  * (3 as u128).pow(4) * (5 as u128).pow(21));
     println!("nCr(25, 4): {}", nCr(25, 4));
-
     println!("3^2 RC: {}", count_recursive_combos(2, 2, 2));
     println!("3^2 Pow: {}", (3 as u128).pow(2));
+
+    // actual number of combinations
+    println!("actual number of combinations (Care of JC): {}", nCr(25, 4) * nCr(4, 2)  * (3 as u128).pow(4) * (5 as u128).pow(21));
 
 }
