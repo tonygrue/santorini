@@ -38,11 +38,12 @@ fn nCr(n: u128, r: u128) -> u128 {
 
 
 
+// this is just a stupid way to do (levels+1) ^ n when n == r
 fn count_recursive_combos(n: u128, r: u128, levels: u128) -> u128{
     if levels == 0 {return 1};
 
     let mut combos: u128 = 0;
-    for r in 1..=n {
+    for r in 0..=n {
         combos += nCr(n, r) * count_recursive_combos(r, r, levels - 1);
     }
     return combos;
@@ -58,5 +59,14 @@ fn count_base_combos() -> u128 {
 
 fn main() {
     println!("Base Combinations: {}", count_base_combos());
-    println!("Recursive Combinations: {}", count_recursive_combos(25, 25, 4));
+
+    println!("RC math: {}", count_recursive_combos(25, 25, 4));
+    println!("4^21 RC: {}", count_recursive_combos(21, 21, 4));
+    println!("4^21 Pow: {}", (5 as u128).pow(21));
+    println!("JC math: {}", nCr(25, 4) * nCr(4, 2)  * (3 as u128).pow(4) * (5 as u128).pow(21));
+    println!("nCr(25, 4): {}", nCr(25, 4));
+
+    println!("3^2 RC: {}", count_recursive_combos(2, 2, 2));
+    println!("3^2 Pow: {}", (3 as u128).pow(2));
+
 }
